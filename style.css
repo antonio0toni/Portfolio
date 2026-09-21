@@ -1,0 +1,182 @@
+/* ============================================================
+   COMO EDITAR
+   - Este CSS é compartilhado pelas duas páginas (index.html e
+     projetos.html). Mudou uma cor aqui, muda nas duas.
+   - Textos: procure "EDITAR:" dentro dos arquivos .html.
+   - Fotos: procure "INSIRA SUA FOTO AQUI" dentro dos .html —
+     são blocos comentados prontos, só descomentar e ajustar o
+     caminho do arquivo (ex: midia/foto-projeto.jpg).
+   ============================================================ */
+
+:root{
+  --paper:#F5F6F2;
+  --paper-2:#EBECE6;
+  --line:#D3D5CB;
+  --ink:#161A1D;
+  --ink-soft:#565D62;
+  --blue:#1F4E8C;
+  --signal:#C6551E;
+  --card-bg:#FFFFFF;
+  --radius:2px;
+  --font-body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-mono:"JetBrains Mono","SFMono-Regular",Consolas,monospace;
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --paper:#14171A; --paper-2:#1B1F23; --line:#33383D;
+    --ink:#ECEEEC; --ink-soft:#A6ACB0; --blue:#6FA0D8; --signal:#E28857;
+    --card-bg:#1B1F23;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14171A; --paper-2:#1B1F23; --line:#33383D;
+  --ink:#ECEEEC; --ink-soft:#A6ACB0; --blue:#6FA0D8; --signal:#E28857;
+  --card-bg:#1B1F23;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--font-body); line-height:1.55; font-size:16px;
+}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+.wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+section{scroll-margin-top:76px;}
+
+/* ---------- nav ---------- */
+nav.topnav{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+nav.topnav .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 24px; gap:16px;
+}
+.brand{
+  font-family:var(--font-mono); font-weight:600; font-size:14px;
+  text-decoration:none; letter-spacing:.01em;
+}
+.navlinks{display:flex; gap:22px; flex-wrap:wrap; list-style:none; margin:0; padding:0;}
+.navlinks a{
+  font-size:13.5px; text-decoration:none; color:var(--ink-soft);
+  font-family:var(--font-mono);
+}
+.navlinks a:hover, .navlinks a.active{color:var(--blue);}
+
+.btn{
+  display:inline-block; padding:11px 20px; font-size:14px; font-weight:600;
+  text-decoration:none; border:1px solid var(--ink); border-radius:var(--radius);
+}
+.btn.primary{background:var(--ink); color:var(--paper);}
+.btn.ghost{background:transparent; color:var(--ink);}
+.btn.primary:hover{opacity:.85;} .btn.ghost:hover{border-color:var(--blue); color:var(--blue);}
+
+/* ---------- placeholder de mídia (foto/imagem) ---------- */
+.media-placeholder{
+  border:1.5px dashed var(--line);
+  background:var(--paper-2);
+  color:var(--ink-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  padding:16px;
+  line-height:1.5;
+}
+
+/* ---------- página SOBRE (index.html) ---------- */
+.cover{
+  min-height:calc(100vh - 53px);
+  display:flex;
+  align-items:center;
+  padding:56px 0;
+}
+.cover-grid{
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:56px;
+  align-items:center;
+}
+@media (max-width:760px){
+  .cover-grid{grid-template-columns:1fr;}
+}
+.cover-photo .media-placeholder{
+  aspect-ratio:4/5;
+  width:100%;
+}
+.cover .eyebrow{
+  font-family:var(--font-mono); font-size:12.5px; color:var(--blue);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:16px;
+}
+.cover h1{font-size:clamp(32px,5.5vw,50px); margin:0 0 14px; line-height:1.08; letter-spacing:-0.01em;}
+.cover p.lede{color:var(--ink-soft); max-width:52ch; font-size:17px; margin:0 0 24px;}
+.cover-bio p{color:var(--ink-soft); max-width:56ch; margin:0 0 12px;}
+.cover .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;}
+.contact-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;}
+
+/* ---------- página PROJETOS ---------- */
+.section{padding:72px 0; border-bottom:1px solid var(--line);}
+.section:last-of-type{border-bottom:none;}
+.sec-kicker{
+  font-family:var(--font-mono); font-size:12px; color:var(--ink-soft);
+  letter-spacing:.05em; text-transform:uppercase; margin-bottom:10px;
+}
+.sec-head h2{font-size:28px; margin:0 0 12px; letter-spacing:-0.01em;}
+.sec-head p{color:var(--ink-soft); max-width:62ch; margin:0 0 40px;}
+
+.proj-group{margin-bottom:56px;}
+.proj-group:last-child{margin-bottom:0;}
+.proj-group > h3{
+  font-family:var(--font-mono); font-size:13px; color:var(--blue);
+  text-transform:uppercase; letter-spacing:.04em; margin:0 0 20px;
+  padding-bottom:8px; border-bottom:1px solid var(--line);
+}
+.card{
+  display:grid; grid-template-columns:280px 1fr; gap:28px;
+  padding:28px 0; border-bottom:1px solid var(--line);
+}
+.card:last-child{border-bottom:none;}
+@media (max-width:720px){ .card{grid-template-columns:1fr;} }
+.card .media-placeholder{min-height:190px;}
+.card .gallery-mini{display:flex; gap:10px; flex-wrap:wrap;}
+.card .gallery-mini .media-placeholder{flex:1 1 90px; min-height:90px; aspect-ratio:1/1;}
+.card h4{margin:0 0 4px; font-size:18px;}
+.card .tag{
+  font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft);
+  margin-bottom:10px; display:block;
+}
+.card p{color:var(--ink-soft); margin:0 0 14px; max-width:62ch;}
+.card ul.spec-list{list-style:none; margin:0; padding:0; font-family:var(--font-mono); font-size:12.5px;}
+.card ul.spec-list li{padding:3px 0; color:var(--ink-soft);}
+.card ul.spec-list li b{color:var(--ink); font-weight:600;}
+.callout{
+  border:1px dashed var(--signal); padding:16px 18px; margin-top:16px;
+  background:color-mix(in srgb, var(--signal) 6%, transparent); font-size:14.5px;
+}
+.callout b{display:block; font-family:var(--font-mono); font-size:11px; color:var(--signal); margin-bottom:8px;}
+
+.empty-state{
+  border:1px dashed var(--line); padding:36px 28px; text-align:left;
+  color:var(--ink-soft); font-size:14.5px;
+}
+.empty-state strong{color:var(--ink); display:block; margin-bottom:6px; font-size:16px;}
+
+/* ---------- habilidades ---------- */
+.skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:32px;}
+@media (max-width:640px){ .skills-grid{grid-template-columns:1fr;} }
+.skill-group h4{font-size:15px; margin:0 0 12px;}
+.skill-tags{display:flex; flex-wrap:wrap; gap:8px;}
+.skill-tags a{
+  font-family:var(--font-mono); font-size:12px; text-decoration:none;
+  padding:6px 10px; border:1px solid var(--line); color:var(--ink-soft);
+}
+.skill-tags a:hover{border-color:var(--blue); color:var(--blue);}
+
+footer{padding:32px 0 56px; font-family:var(--font-mono); font-size:12px; color:var(--ink-soft);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
