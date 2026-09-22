@@ -17,7 +17,7 @@
     html, body { width: 100%; min-height: 100%; }
 
     body {
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
       background: #123f4e;
       color: #fff;
@@ -28,12 +28,13 @@
        ========================================================= */
     .pagina {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh; /* corrige a barra de endereço em navegadores mobile */
 
       background-image: url("midia/main2.jpg");
       background-size: cover;
-      background-position: center center;
+      background-position: center 35%;
       background-repeat: no-repeat;
     }
 
@@ -157,6 +158,13 @@
     /* =========================================================
        RESPONSIVO
        ========================================================= */
+    @media (max-width: 1024px) {
+      .projetos {
+        width: min(320px, 38vw);
+        right: 4%;
+      }
+    }
+
     @media (max-width: 700px) {
       .topnav { padding: 12px 0; }
       .brand { font-size: 16px; }
